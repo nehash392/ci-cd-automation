@@ -22,16 +22,9 @@ This project demonstrates **CI/CD Automation** using **Jenkins** and **GitHub Ac
 
 ## Architecture Diagram
 
-```mermaid
-graph TD
-    A[GitHub / Jenkins] --> B[Build Stage]
-    B --> C[Docker Image Creation]
-    C --> D[AWS ECR]
-    D --> E[AWS ECS Service Deployment]
-    E --> F[Application Running]
+## 📂 Project Structure
 
-
-Project Structure
+```text
 
 ci-cd-automation/
 │── jenkins/
