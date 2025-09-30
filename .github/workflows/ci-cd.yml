@@ -1,0 +1,36 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Build Docker Image
+        run: |
+          docker build -t demo-app .
+
+      - name: Push to AWS ECR
+        run: |
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <account-id>.dkr.ecr.us-east-1.amazonaws.com
+          docker tag demo-app:latest <account-id>.dkr.ecr.us-east-1.amazonaws.com/demo-app:latest
+          docker push <account-id>.dkr.ecr.us-east-1.amazonaws.com/demo-app:latest
+
+      - name: Deploy to ECS
+        run: |
+          aws ecs update-service \
+            --cluster demo-cluster \
+            --service demo-service \
+            --force-new-deployment \
+            --region us-east-1
