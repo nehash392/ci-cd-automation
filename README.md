@@ -62,7 +62,7 @@ For GitHub Actions:
 Push changes to main branch and watch the pipeline run.
 
 
-Learning Objectives : 
+## Learning Objectives : 
 Automating build & deployment
 Jenkins pipeline creation
 GitHub Actions workflow scripting
