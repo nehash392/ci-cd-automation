@@ -20,7 +20,6 @@ This project demonstrates **CI/CD Automation** using **Jenkins** and **GitHub Ac
 
 ---
 
-## Architecture Diagram
 
 ## 📂 Project Structure
 
@@ -42,9 +41,9 @@ ci-cd-automation/
 │   └── Dockerfile
 │── README.md
 │── .gitignore
+```
 
-
-Getting Started
+## Getting Started
 1. Prerequisites
 Jenkins server
 AWS CLI with proper credentials
